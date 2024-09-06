@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+        .logo {
+            color: #ff0000;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 100px;
+            margin-right: 100px;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            display: flex;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            outline: none;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        .user-actions img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .menu-icon, .user-actions img {
+            margin-right: 20px;
+        }
+        nav {
+            background-color: #fff;
+            width: 240px;
+            padding: 20px 0;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            height: 100%;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, 0.12);
+        }
+        nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #606060;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #f1f1f1;
+        }
+        nav a img {
+            width: 24px;
+            margin-right: 20px;
+        }
+        main {
+            margin-left: 260px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .video-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+        .video-thumbnail {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background-color: #000;
+            position: relative;
+        }
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire thumbnail area */
+        }
+        .video-info {
+            padding: 10px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-channel {
+            color: #606060;
+            font-size: 14px;
+        }
+        .video-meta {
+            color: #909090;
+            font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            nav {
+                width: 200px;
+            }
+            main {
+                margin-left: 220px;
+            }
+        }
+        @media (max-width: 480px) {
+            nav {
+                display: none;
+            }
+            main {
+                margin-left: 0;
+                grid-template-columns: 1fr;
+            }
+            header {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="menu-icon">
+            <img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png"/>
+        </div>
+        <div class="logo">
+            <img src="images/lol.jpg" alt="YouTube Logo">
+            <span></span>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>
+                <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
+            </button>
+        </div>
+        <div class="user-actions">
+            <img src="https://img.icons8.com/material-outlined/24/000000/video-call.png" alt="Upload">
+            <img src="images/notification-bell.svg" alt="Notifications">
+            <img src="images/nsccsrm.jpg" alt="User">
+        </div>
+    </header>
+
+    <nav>
+        <a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/home--v1.png"/> Home</a>
+        <a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/fire-element.png"/> Trending</a>
+        <a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/subscribe.png"/> Subscriptions</a>
+        <a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/folder-invoices.png"/> Library</a>
+        <a href="#"><img src="images/history.png"/> History</a>
+    </nav>
+
+    <main>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/nsccsrm.jpg" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">Recruitments Open 🚀</div>
+                <div class="video-channel">Newton School Coding Club SRM</div>
+                <div class="video-meta">1M views • 2 days ago</div>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/courage-the-cowardly-dog-minimal-4k-4g.jpg" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">Courage the Cowardly Dog</div>
+                <div class="video-channel">CN</div>
+                <div class="video-meta">500K views • 5 days ago</div>
+            </div>
+        </div>
+        <!-- Add more video cards as needed -->
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/mqdefault_6s (2).webp" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">India's Got Latent</div>
+                <div class="video-channel">Samay Raina</div>
+                <div class="video-meta">500K views • 5 days ago</div>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/MV5BOTcxNzNmMzItYTk0ZC00YmM4LThhYTQtOTFhYzE4YjNkODhmXkEyXkFqcGdeQWpnYW1i._V1_.jpg" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">Deadpool loves Wolverine?</div>
+                <div class="video-channel">Kevin Feige</div>
+                <div class="video-meta">500K views • 5 days ago</div>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/mqdefault_6s.webp" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">Hello Youtube!</div>
+                <div class="video-channel">CR7</div>
+                <div class="video-meta">60M views • 5 days ago</div>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img src="images/mqdefault_6s (1).webp" alt="Video Thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">Max Verstappen becomes 4th time world Champion</div>
+                <div class="video-channel">F1</div>
+                <div class="video-meta">100K views • 5 days ago</div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
